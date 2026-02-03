@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guestbook — STIJN'S SITE</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar"><marquee>LEAVE A NOTE — BE NICE(ISH)</marquee></div>
+  <header class="header">
+    <h1 class="logo">GUESTBOOK</h1>
+  </header>
+
+  <main class="main">
+    <section class="panel">
+      <h2>Sign the guestbook (local only)</h2>
+      <form id="gbform">
+        <label>Name:<br><input type="text" id="gname" required></label><br><br>
+        <label>Message:<br><textarea id="gmsg" rows="4" required></textarea></label><br><br>
+        <button type="submit" style="padding:8px 12px">SIGN</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Messages</h2>
+      <div id="messages"></div>
+      <p style="font-size:12px;color:#bbb">Note: This guestbook stores messages in your browser only (no server). To receive messages by email, I can show you how to use Formspree.</p>
+    </section>
+  </main>
+
+  <footer class="footer"><a href="/">Return home</a></footer>
+
+  <script>
+    // Very simple localStorage guestbook
+    const form = document.getElementById('gbform');
+    const msgs = document.getElementById('messages');
+    const key = 'stijn_guestbook_v1';
+
+    function render(){
+      const list = JSON.parse(localStorage.getItem(key) || '[]').slice().reverse();
+      if(list.length === 0){ msgs.innerHTML = '<p>No messages yet. Be the first.</p>'; return;}
+      msgs.innerHTML = list.map(entry => {
+        const time = new Date(entry.t).toLocaleString();
+        return `<div style="padding:8px;border-bottom:1px dashed rgba(255,255,255,0.04);margin-bottom:6px">
+                  <strong style="color:var(--accent1)">${escapeHtml(entry.n)}</strong>
+                  <span style="font-size:12px;color:#aaa;margin-left:8px">${time}</span>
+                  <div style="margin-top:6px;color:var(--panel)">${escapeHtml(entry.m)}</div>
+                </div>`;
+      }).join('');
+    }
+
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      const name = document.getElementById('gname').value || 'anon';
+      const msg = document.getElementById('gmsg').value || '';
+      const list = JSON.parse(localStorage.getItem(key) || '[]');
+      list.push({n:name,m:msg,t:Date.now()});
+      localStorage.setItem(key, JSON.stringify(list));
+      document.getElementById('gname').value='';document.getElementById('gmsg').value='';
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
