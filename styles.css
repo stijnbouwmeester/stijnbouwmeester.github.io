@@ -1,120 +1,51 @@
-/* 90s GeoCities / Angelfire aesthetic — intentionally loud and messy
-   + pixel space tile background and CRT scanlines
-   Upload a small tile image named "space-tile.png" to the repo root.
+/* Add this section near the top of your CSS (:root or body area).
+   It uses a repeating bitmap tile named "space-tile.png" (see upload steps below).
+   The image is repeated, forced to look pixelated, and we add
+   a tinted nebula overlay and some scanline noise for extra 90s charm.
 */
 
-:root{
-  --bg1: #000014;
-  --panel: #f2f1e8;
-  --accent1: #ff1a75; /* hot pink */
-  --accent2: #00ff9c; /* neon green */
-  --text: #0b0b0b;
-  --mono: 'VT323', monospace;
-  --pixel: 'Press Start 2P', monospace;
-}
+body {
+  /* fallback color while tile loads */
+  background-color: #000014;
 
-/* Basic reset / layout */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:var(--mono);
-  color:var(--panel);
-  line-height:1.25;
-  overflow-x:hidden;
+  /* the repeating bitmap tile - upload space-tile.png to your repo root and reference it here */
+  background-image: url('space-tile.png');
 
-  /* The pixel/bitmap space tile: upload space-tile.png to the repo root */
-  background-color: var(--bg1);
-  background-image: url('space-tile.png'),
-                    linear-gradient(45deg, rgba(255,255,255,0.02) 1px, transparent 1px),
-                    repeating-linear-gradient(0deg, #001 0 2px, transparent 2px 6px);
-  /* the first image is the tile; the other layers retain the previous noise pattern */
-  background-repeat: repeat, repeat, repeat;
-  /* keep tile at native pixel size to look blocky; change if you use a different tile size */
-  background-size: 64px 64px, 12px 12px, 8px 8px;
+  /* repeat the tile across the page */
+  background-repeat: repeat;
 
-  /* force pixelated rendering */
-  image-rendering: pixelated;
+  /* Keep each tile at native size so it looks pixel-y; change 64px to the tile size you upload */
+  background-size: 64px 64px;
+
+  /* ensure the browser renders the image as pixel-art */
   image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+
+  /* keep your existing layering (nebula/stars) above/below as needed */
+  color: var(--panel); /* keep text readable on dark background */
 }
 
-/* Optional: a semi-transparent tint layer to blend tile and page colors */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(120deg, rgba(5,0,20,0.20), rgba(40,0,60,0.12));
-  z-index: 0;
-  mix-blend-mode: multiply;
-}
-
-/* Optional: cheap scanline effect for CRT/bad monitor vibe */
+/* Optional: a cheap scanline effect on top to sell the CRT / bad monitor vibe */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   background-image: linear-gradient(rgba(0,0,0,0.04) 50%, rgba(255,255,255,0.01) 51%);
-  background-size: 100% 3px;
+  background-size: 100% 3px; /* thin horizontal lines */
   mix-blend-mode: overlay;
   z-index: 1;
   opacity: 0.55;
 }
 
-/* Top marquee bar */
-.topbar{background:#111;padding:6px 0;color:#fff;border-bottom:2px dashed var(--accent2);font-size:13px}
-.topbar marquee{color:var(--accent1);font-weight:700}
-
-/* Header */
-.header{padding:18px; text-align:center; position:relative; z-index:2}
-.logo{font-family:var(--pixel);font-size:20px;margin:0;color:var(--accent1);text-shadow:0 0 6px rgba(255,26,117,0.6)}
-.logo .neon{color:var(--accent2);text-shadow:0 0 8px rgba(0,255,156,0.5)}
-.subtitle{color:#d1d0c6;margin:6px 0 0;font-size:12px}
-
-/* Menu with retro 3D buttons */
-.menu{background:linear-gradient(180deg,#081133,#03061a);padding:8px;text-align:center;border-top:3px solid #0a0a2f; position:relative; z-index:2}
-.menu a{color:var(--panel);text-decoration:none;padding:8px 10px;border:2px outset #333;margin:0 6px;font-size:12px}
-.menu a:hover{background:var(--accent2);color:#000}
-
-/* Main page panels */
-.main{max-width:980px;margin:18px auto;padding:0 16px; position:relative; z-index:2}
-.panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:2px solid rgba(255,255,255,0.03);padding:14px;margin-bottom:14px}
-.panel h2{font-family:var(--pixel);color:var(--accent2);font-size:12px;margin:0 0 8px}
-
-/* Retro boxed content */
-.retro-box{background:#000;padding:12px;border:3px solid var(--accent1);color:var(--panel);margin:12px 0}
-.weird-link{display:inline-block;padding:8px 10px;background:var(--accent1);color:#000;text-decoration:none;border:2px groove #fff;margin-top:8px}
-.link-list{margin:8px 0 0;padding-left:18px;color:var(--panel)}
-.link-list a{color:var(--accent2);text-decoration:underline}
-
-/* Glitchy text */
-.glitch{
-  position:relative;
-  color:var(--panel);
-  font-size:13px;
-}
-.glitch::before, .glitch::after{
-  content:attr(data-text);
-  position:absolute;left:0;top:0;
-  width:100%;
-  mix-blend-mode:screen;
-  opacity:0.6;
-  pointer-events:none;
-}
-.glitch::before{transform:translate(2px, -1px);color:var(--accent1)}
-.glitch::after{transform:translate(-2px, 1px);color:var(--accent2)}
-
-/* Visitor counter */
-.counter{margin-top:10px;padding:8px;background:#070a12;border:2px inset #080b16;color:var(--panel);display:inline-block}
-
-/* Footer */
-.footer{text-align:center;padding:12px;font-size:11px;color:#cfcfca;border-top:2px dashed rgba(255,255,255,0.03); position:relative; z-index:2}
-
-/* Small screens */
-@media (max-width:640px){
-  .logo{font-size:14px}
-  .menu a{display:inline-block;margin:4px 2px;padding:6px 8px}
-  .panel{padding:10px}
+/* Optional: a semi-transparent color tint to blend tile and page colors */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(5,0,20,0.25), rgba(40,0,60,0.15));
+  z-index: 0;
+  mix-blend-mode: multiply;
 }
