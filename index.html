@@ -3,79 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stijn's Retro Space Site</title>
+  <title>STIJN'S OFFICIAL UNOFFICIAL SITE</title>
 
-  <!-- Retro / pixel fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Pixel / monospace vibe -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="An 80s-inspired retro neon site. Edit index.html to change text.">
 </head>
 <body>
-  <!-- Background layers are CSS-driven (stars, gradient, grid) -->
-  <div class="stars"></div>
-  <div class="nebula"></div>
+  <!-- Tiled, noisy background and pattern are CSS-driven -->
+  <div class="topbar">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      WELCOME TO THE ARCHIVE OF ODDITIES * DO NOT TRUST EVERYTHING * CHECK THE SIGNALS * CLICK AT YOUR OWN RISK
+    </marquee>
+  </div>
 
-  <header class="site-header">
-    <div class="brand">
-      <h1>STIJN<span class="dot">.</span></h1>
-      <p class="tag">retro space vibes</p>
-    </div>
-
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="header">
+    <h1 class="logo">STIJN'S OFFICIAL <span class="neon">UNOFFICIAL</span></h1>
+    <p class="subtitle">A humble archive of weird links, lost transmissions, and definitely-not-government stuff.</p>
   </header>
 
-  <main id="home" class="hero">
-    <div class="hero-inner">
-      <h2 class="title">WELCOME TO THE NEON VOID</h2>
-      <p class="subtitle">An 80s-inspired playground. Edit this text in <code>index.html</code>.</p>
+  <nav class="menu">
+    <a href="#weird">WEIRD</a> |
+    <a href="#files">FILES</a> |
+    <a href="guestbook.html">GUESTBOOK</a> |
+    <a href="#contact">CONTACT</a>
+  </nav>
 
-      <!-- CTA — change link or text as you like -->
-      <p class="cta-wrap">
-        <a class="cta" href="#projects">EXPLORE</a>
-      </p>
+  <main class="main">
+    <section id="weird" class="panel">
+      <h2>RECENT TRANSMISSIONS</h2>
+      <p class="glitch">[ 03:14 GMT ] — The star chart coordinates are wrong. The dot moves at night. I recorded it. Listen.</p>
 
-      <div class="grid-floor" aria-hidden="true"></div>
-    </div>
+      <div class="retro-box">
+        <h3>Featured Leak</h3>
+        <p>This is a completely fictional leak used for demonstration. Replace with your content.</p>
+        <a class="weird-link" href="#">DOWNLOAD THE LEAK (zip)</a>
+      </div>
+    </section>
+
+    <section id="files" class="panel">
+      <h2>FILES & LINKS</h2>
+      <ul class="link-list">
+        <li><a href="#">.TXT — notes-from-1999.txt</a></li>
+        <li><a href="#">.GIF — glowing-planet.gif</a></li>
+        <li><a href="#">.HTML — mirror-of-a-mirror.html</a></li>
+      </ul>
+
+      <div class="counter">Visitor counter: <span id="visits">0</span></div>
+    </section>
+
+    <section id="contact" class="panel">
+      <h2>CONTACT</h2>
+      <p>If you dare, email: <a href="mailto:hello@stijnbouwmeester.nl">hello@stijnbouwmeester.nl</a></p>
+      <p>Want a real form? See <code>guestbook.html</code> or ask me to connect Formspree.</p>
+    </section>
   </main>
 
-  <section id="projects" class="section">
-    <h3>Projects</h3>
-    <div class="cards">
-      <article class="card">
-        <h4>Project One</h4>
-        <p>Short description. Replace this with your project and link to it.</p>
-      </article>
-      <article class="card">
-        <h4>Project Two</h4>
-        <p>Another project description. Keep it short and clear.</p>
-      </article>
-      <article class="card">
-        <h4>Project Three</h4>
-        <p>More info here — links, images, or short notes work well.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="about" class="section about">
-    <h3>About</h3>
-    <p>Hi — I'm Stijn. Replace this paragraph with your short bio. Want a portfolio layout or resume link? Tell me and I'll add it.</p>
-  </section>
-
-  <section id="contact" class="section contact">
-    <h3>Contact</h3>
-    <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
-    <p>Or link to social profiles.</p>
-  </section>
-
-  <footer class="site-footer">
-    <small>© Stijn Bouwmeester — <a href="/">stijnbouwmeester.nl</a></small>
+  <footer class="footer">
+    <p class="small">This site is for fun. All conspiracy content is pretend. Replace it with your own theories.</p>
+    <p class="small">Made with questionable taste and an affinity for blinking gifs.</p>
   </footer>
 
+  <script>
+    // Simple local visitor counter (keeps a local count in the visitor's browser)
+    // and a global-ish fake counter (randomized) for vintage feel.
+    (function(){
+      // local visits for this browser
+      const key = 'stijn_local_visits';
+      let local = parseInt(localStorage.getItem(key) || '0', 10) + 1;
+      localStorage.setItem(key, local);
+      // "global" faux visits: small random base + local visits so it feels lively
+      const base = 1372; // edit this number in the file for a different global baseline
+      const display = base + local;
+      document.getElementById('visits').textContent = display;
+    })();
+  </script>
 </body>
 </html>
