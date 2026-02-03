@@ -3,10 +3,79 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stijn Bouwmeester</title>
+  <title>Stijn's Retro Space Site</title>
+
+  <!-- Retro / pixel fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="An 80s-inspired retro neon site. Edit index.html to change text.">
 </head>
 <body>
-  <h1>Hallo, ik ben Stijn :D</h1>
-  <p>yup, zo heet ik</p>
+  <!-- Background layers are CSS-driven (stars, gradient, grid) -->
+  <div class="stars"></div>
+  <div class="nebula"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>STIJN<span class="dot">.</span></h1>
+      <p class="tag">retro space vibes</p>
+    </div>
+
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="hero-inner">
+      <h2 class="title">WELCOME TO THE NEON VOID</h2>
+      <p class="subtitle">An 80s-inspired playground. Edit this text in <code>index.html</code>.</p>
+
+      <!-- CTA — change link or text as you like -->
+      <p class="cta-wrap">
+        <a class="cta" href="#projects">EXPLORE</a>
+      </p>
+
+      <div class="grid-floor" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <section id="projects" class="section">
+    <h3>Projects</h3>
+    <div class="cards">
+      <article class="card">
+        <h4>Project One</h4>
+        <p>Short description. Replace this with your project and link to it.</p>
+      </article>
+      <article class="card">
+        <h4>Project Two</h4>
+        <p>Another project description. Keep it short and clear.</p>
+      </article>
+      <article class="card">
+        <h4>Project Three</h4>
+        <p>More info here — links, images, or short notes work well.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <h3>About</h3>
+    <p>Hi — I'm Stijn. Replace this paragraph with your short bio. Want a portfolio layout or resume link? Tell me and I'll add it.</p>
+  </section>
+
+  <section id="contact" class="section contact">
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
+    <p>Or link to social profiles.</p>
+  </section>
+
+  <footer class="site-footer">
+    <small>© Stijn Bouwmeester — <a href="/">stijnbouwmeester.nl</a></small>
+  </footer>
+
 </body>
 </html>
