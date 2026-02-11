@@ -3,79 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STIJN'S STUKJE INTERNET</title>
-
-  <!-- Pixel / monospace vibe -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-
+  <title>STIJN'S PAGE — THE ARCHIVE</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Tiled, noisy background and pattern are CSS-driven -->
-  <div class="topbar">
+  <div class="marquee-wrap">
     <marquee behavior="scroll" direction="left" scrollamount="6">
-      WELCOME OP MIJN WEBSITE :D
+      WELCOME TO THE ARCHIVE • CHECK THE SIGNALS • CLICK AT YOUR OWN RISK
     </marquee>
   </div>
 
-  <header class="header">
-    <h1 class="logo">STIJN'S STUKJE <span class="neon">INTERNET</span></h1>
-    <p class="subtitle">JOEPIE DE POEPIE</p>
+  <header class="topbar">
+    <h1 class="site-title">STIJN'S OFFICIAL UNOFFICIAL ARCHIVE</h1>
+    <p class="subtitle">lost files · weird links · questionable theories</p>
   </header>
 
-  <nav class="menu">
-    <a href="#weird">WEIRD</a> |
-    <a href="#files">LOL</a> |
-    <a href="guestbook.html">GUESTBOOK</a> |
-    <a href="#contact">CONTACT</a>
-  </nav>
+  <main class="center-area" role="main">
+    <div class="boxes">
+      <section class="box">
+        <h2>BOX ONE</h2>
+        <p>Short text or link. Replace with whatever you want — an image, a .txt or a weird gif link.</p>
+        <p><a href="#" class="btn">OPEN</a></p>
+      </section>
 
-  <main class="main">
-    <section id="weird" class="panel">
-      <h2>LOREM</h2>
-      <p class="glitch">IPSUM DOLOR SIT AMET</p>
+      <section class="box">
+        <h2>BOX TWO</h2>
+        <p>Another area for notes, leaks, or weird ascii art. Edit the HTML directly to change it.</p>
+        <p><a href="#" class="btn">OPEN</a></p>
+      </section>
 
-      <div class="retro-box">
-        <h3>HOIII</h3>
-        <p>HALLOOOOO</p>
-        <a class="weird-link" href="#">HOIHOI</a>
-      </div>
-    </section>
-
-    <section id="files" class="panel">
-      <h2>TEST</h2>
-      <ul class="link-list">
-        <li><a href="#">.TXT — notes-from-1999.txt</a></li>
-        <li><a href="#">.GIF — glowing-planet.gif</a></li>
-        <li><a href="#">.HTML — mirror-of-a-mirror.html</a></li>
-      </ul>
-
-      <div class="counter">Visitor counter: <span id="visits">0</span></div>
-    </section>
-
-    <section id="contact" class="panel">
-      <h2>CONTACT</h2>
-      <p>MAIL ME: <a href="mailto:hello@stijnbouwmeester.nl">hello@stijnbouwmeester.nl</a></p>
-    </section>
+      <section class="box">
+        <h2>BOX THREE</h2>
+        <p>Links, downloads, or the guestbook. Keep it short so everything fits on one screen.</p>
+        <p><a href="guestbook.html" class="btn">GUESTBOOK</a></p>
+      </section>
+    </div>
   </main>
 
-  <footer class="footer">
-    <p class="small">Dit was het al :(</p>
+  <footer class="foot">
+    <div class="footer-box">
+      <p>© Stijn Bouwmeester — this page is for fun. Email: <a href="mailto:hello@stijnbouwmeester.nl">hello@stijnbouwmeester.nl</a></p>
+    </div>
   </footer>
-
-  <script>
-    // Simple local visitor counter (keeps a local count in the visitor's browser)
-    // and a global-ish fake counter (randomized) for vintage feel.
-    (function(){
-      // local visits for this browser
-      const key = 'stijn_local_visits';
-      let local = parseInt(localStorage.getItem(key) || '0', 10) + 1;
-      localStorage.setItem(key, local);
-      // "global" faux visits: small random base + local visits so it feels lively
-      const base = 1372; // edit this number in the file for a different global baseline
-      const display = base + local;
-      document.getElementById('visits').textContent = display;
-    })();
-  </script>
 </body>
 </html>
