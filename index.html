@@ -2,52 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STIJN'S ARCHIVE</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speaking in Tongues - HOME PAGE</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Top banner with scrolling text -->
-  <header class="top-banner">
-    <div class="marquee-wrap">
-      <marquee behavior="scroll" direction="left" scrollamount="6">
-        WELCOME TO THE ARCHIVE — CHECK THE SIGNALS — CLICK AT YOUR OWN RISK
-      </marquee>
-    </div>
-    <div class="title-wrap">
-      <h1 class="site-title">STIJN'S OFFICIAL UNOFFICIAL ARCHIVE</h1>
-      <p class="site-sub">lost files · weird links · questionable theories</p>
-    </div>
-  </header>
+  <div class="page">
+    <header class="top">
+      <div class="top-left">
+        <div class="cdbox">
+          <div class="cd"></div>
+          <div class="cdtext">CD Zone</div>
+        </div>
+      </div>
 
-  <!-- Main area with 3 boxes horizontally aligned (never wrap) -->
-  <main class="main" role="main">
-    <div class="boxes" aria-label="Three boxes row">
-      <article class="box">
-        <h2>BOX ONE</h2>
-        <p>Short text or link. Replace this paragraph with your content. Keep it concise so it reads well.</p>
-        <p><a class="btn" href="#">OPEN</a></p>
-      </article>
+      <div class="top-center">
+        <div class="title">
+          <span class="t1">Speaking in</span>
+          <span class="t2">Tongues</span>
+        </div>
+        <div class="strap">HOMEPAGE</div>
+      </div>
 
-      <article class="box">
-        <h2>BOX TWO</h2>
-        <p>Another area for notes, leaks, or a tiny gif. Edit the HTML to change this text or add links.</p>
-        <p><a class="btn" href="#">OPEN</a></p>
-      </article>
+      <div class="top-right">
+        <div class="sound">
+          <div class="speaker"></div>
+          <div class="soundtext">SOUND ON!</div>
+        </div>
+      </div>
+    </header>
 
-      <article class="box">
-        <h2>BOX THREE</h2>
-        <p>Guestbook, downloads, or weird ascii art go here. Link to guestbook.html if you want the local guestbook.</p>
-        <p><a class="btn" href="guestbook.html">GUESTBOOK</a></p>
-      </article>
-    </div>
-  </main>
+    <main class="mid">
+      <!-- LEFT NAV -->
+      <aside class="panel left">
+        <nav class="nav">
+          <a class="navbtn" href="#">HOME</a>
+          <a class="navbtn" href="#">BAND INFO</a>
+          <a class="navbtn" href="#">LYRICS</a>
+          <a class="navbtn" href="#">PHOTOS</a>
+          <a class="navbtn" href="#">LINKS!!!</a>
+        </nav>
 
-  <!-- Footer banner pinned to the bottom -->
-  <footer class="bottom-banner">
-    <div class="footer-inner">
-      <p>© Stijn Bouwmeester — this page is for fun. Email: <a href="mailto:hello@stijnbouwmeester.nl">hello@stijnbouwmeester.nl</a></p>
-    </div>
-  </footer>
+        <div class="guestbook">
+          <div class="gb-title">Sign My Guestbook!</div>
+          <a class="gb-btn" href="#">VIEW GUESTBOOK!</a>
+        </div>
+      </aside>
+
+      <!-- CENTER CONTENT -->
+      <section class="panel center">
+        <div class="globe"></div>
+        <div class="welcome">Welcome to our site!</div>
+
+        <h2 class="whatsnew">What's New?</h2>
+        <div class="updated">UPDATED!!!!</div>
+
+        <ul class="bullets">
+          <li>New Tour Dates Posted!</li>
+          <li>Under Construction!</li>
+        </ul>
+
+        <div class="construction">
+          <div class="stripe">UNDER CONSTRUCTION!</div>
+          <div class="tiny-worker" title="tiny worker dude"></div>
+        </div>
+
+        <div class="construction2">
+          <div class="cone"></div>
+          <div class="stripe2">Under Construction!</div>
+        </div>
+      </section>
+
+      <!-- RIGHT LINKS -->
+      <aside class="panel right">
+        <div class="coolstuff">
+          <div class="cooltitle">Cool Stuff!</div>
+
+          <a class="coolitem" href="#">
+            <span class="icon music"></span>
+            <span>MP3 Downloads</span>
+            <span class="arrow">▶</span>
+          </a>
+
+          <a class="coolitem" href="#">
+            <span class="icon palette"></span>
+            <span>Fan Art Gallery</span>
+          </a>
+
+          <a class="coolitem" href="#">
+            <span class="icon pc"></span>
+            <span>Retro Chat Room</span>
+            <span class="arrow">▶</span>
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="bottom">
+      <div class="hit">
+        <span class="label">Hit Counter:</span>
+        <span class="digits" aria-label="hit counter">
+          <span>0</span><span>0</span><span>0</span><span>2</span><span>3</span><span>4</span>
+        </span>
+      </div>
+
+      <div class="badges">
+        <span class="badge">Best Viewed<br/>in Netscape!</span>
+        <span class="badge hot">AWESOME<br/>90's SITE!</span>
+        <span class="badge geo">GeoCities</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- optional: extra “90s” flair -->
+  <marquee class="marq" behavior="alternate" scrollamount="6">
+    *** WELCOME 2 MY HOMEPAGE!!! *** DON'T FORGET TO SIGN THE GUESTBOOK!!! ***
+  </marquee>
 </body>
 </html>
