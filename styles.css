@@ -1,132 +1,537 @@
-/* GeoCities-style: top banner (marquee), three boxes ALWAYS horizontal, footer pinned bottom.
-   On narrow screens the boxes container scrolls horizontally (so no vertical stack). */
-
+/* Intentionally loud 90s vibes */
 :root{
-  --bg: #000;
-  --text: #fff;
-  --panel-bg: rgba(0,0,0,0.75);
-  --border: #fff;
-  --btn-bg: #fff;
-  --btn-text: #000;
-  --box-width: 320px;   /* width of each box (change to scale) */
-  --box-gap: 18px;
-  --max-width: 1200px;
+  --paper: #f4f1e6;
+  --ink: #101010;
+  --red: #e84a3a;
+  --blue: #1f55ff;
+  --green: #2fb34a;
+  --yellow: #ffd24a;
 }
 
-/* Reset / layout */
-*{box-sizing:border-box}
-html,body{height:100%}
+*{ box-sizing: border-box; }
+
 body{
-  margin:0;
-  min-height:100vh;
-  background:var(--bg);
-  color:var(--text);
-  font-family: "Times New Roman", Georgia, serif;
-  overflow:hidden; /* prevent vertical scrolling by default */
+  margin: 0;
+  font-family: "Comic Sans MS", "Comic Sans", "Trebuchet MS", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(0,0,0,0.06) 0 2px, transparent 2px 14px),
+    radial-gradient(circle at 70% 30%, rgba(0,0,0,0.05) 0 2px, transparent 2px 16px),
+    linear-gradient(#ffffff, #f7f7f7);
+  color: var(--ink);
+}
+
+/* page frame + rainbow border like the drawing */
+.page{
+  max-width: 980px;
+  margin: 18px auto 10px;
+  border: 14px solid transparent;
+  border-image: linear-gradient(90deg, var(--red), var(--yellow), var(--green), var(--blue), var(--red)) 1;
+  background: var(--paper);
+  box-shadow: 0 12px 0 rgba(0,0,0,.08);
+  position: relative;
+}
+
+/* scribbly paper texture */
+.page:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+  background:
+    repeating-linear-gradient(0deg,
+      rgba(0,0,0,.08) 0px,
+      rgba(0,0,0,.08) 1px,
+      transparent 1px,
+      transparent 5px);
+}
+
+/* Top header: 3 blocks */
+.top{
+  display:grid;
+  grid-template-columns: 180px 1fr 180px;
+  gap: 10px;
+  padding: 16px 16px 10px;
+}
+
+.top-left, .top-right{
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+
+.top-right{ justify-content:flex-end; }
+
+.cdbox{
+  width: 120px;
+  padding: 10px;
+  background: #161616;
+  border: 4px solid #fff;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.25);
+  color: #fff;
+  text-align:center;
+}
+
+.cd{
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 6px;
+  border-radius: 50%;
+  background:
+    conic-gradient(#ff3b3b, #ffe14a, #4dff8e, #4dc5ff, #b14dff, #ff3b3b);
+  border: 3px solid #000;
+  position: relative;
+}
+.cd:after{
+  content:"";
+  position:absolute;
+  inset: 18px;
+  background:#000;
+  border-radius:50%;
+  box-shadow: inset 0 0 0 6px #aaa;
+}
+
+.cdtext{
+  font-weight: 800;
+  letter-spacing:.5px;
+  font-size: 14px;
+}
+
+.top-center{
   display:flex;
   flex-direction:column;
-}
-
-/* Top banner: marquee + title */
-.top-banner{
-  border-bottom:2px solid var(--border);
-  text-align:center;
-  padding:8px 12px 10px;
-}
-.marquee-wrap{background:#000;padding:6px 0;border-bottom:1px dashed var(--border)}
-.marquee-wrap marquee{color:var(--text);font-weight:bold;font-size:14px}
-.title-wrap{padding:8px 0}
-.site-title{margin:0;font-size:22px;color:var(--text)}
-.site-sub{margin:6px 0 0;font-size:13px;color:var(--text)}
-
-/* Main center area that holds the three boxes
-   The .boxes is a horizontal row that never wraps.
-   If the viewport is too narrow, it will scroll horizontally (no vertical wrap).
-*/
-.main{
-  flex:1 1 auto; /* fill space between header and footer */
-  display:flex;
   align-items:center;
   justify-content:center;
-  padding:12px;
-  overflow: hidden;
 }
 
-/* Horizontal scrolling row container */
-.boxes{
-  display:flex;
-  flex-direction:row;
-  gap: var(--box-gap);
-  align-items:stretch;
-  justify-content:center;
-  width:100%;
-  max-width:var(--max-width);
+.title{
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 900;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.15);
+  transform: rotate(-1deg);
+}
+.title .t1{ color: #e23a2e; margin-right: 6px; }
+.title .t2{ color: #2358ff; }
 
-  /* never wrap: if viewport smaller than content, allow horizontal scroll */
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  overflow-y:hidden;
-
-  /* make scrollbar visible in a vintage way (optional) */
-  -webkit-overflow-scrolling: touch;
-  padding-bottom:6px;
+.strap{
+  margin-top: 6px;
+  padding: 4px 14px;
+  background: #111;
+  color: #ffd24a;
+  font-weight: 900;
+  letter-spacing: 3px;
+  border: 4px solid #000;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.2);
 }
 
-/* Each box: fixed width so three sit horizontally side-by-side */
-.box{
-  flex: 0 0 var(--box-width); /* do not grow or shrink beyond this width */
-  width: var(--box-width);
-  height: 260px;
-  background:var(--panel-bg);
-  border:2px solid var(--border);
-  padding:12px;
+.sound{
+  text-align:center;
+  width: 130px;
+  padding: 10px 10px 8px;
+  background: #2b57ff;
+  border: 4px solid #fff;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.25);
+  color: #ff8d2a;
+  font-weight: 900;
+}
+
+.speaker{
+  width: 52px;
+  height: 40px;
+  margin: 0 auto 6px;
+  position: relative;
+  background: #ffd24a;
+  clip-path: polygon(0 30%, 35% 30%, 55% 10%, 55% 90%, 35% 70%, 0 70%);
+  border: 3px solid #000;
+}
+.speaker:before, .speaker:after{
+  content:"";
+  position:absolute;
+  left: 52px;
+  top: 6px;
+  width: 22px;
+  height: 28px;
+  border: 3px solid rgba(255,210,74,.95);
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  filter: drop-shadow(0 0 0 #000);
+}
+.speaker:after{
+  left: 66px;
+  top: 0px;
+  width: 28px;
+  height: 40px;
+  opacity: .75;
+}
+
+.soundtext{
+  font-size: 16px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+}
+
+/* Middle: three columns */
+.mid{
+  display:grid;
+  grid-template-columns: 210px 1fr 270px;
+  gap: 12px;
+  padding: 0 16px 14px;
+  position: relative;
+}
+
+.panel{
+  border: 6px solid rgba(0,0,0,.18);
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,.35);
+  padding: 14px;
+  position: relative;
+}
+
+.left{
+  background: #ff6a58;
+}
+
+.center{
+  background: #fff;
+  text-align:center;
+}
+
+.right{
+  background: #2fb34a;
+}
+
+/* LEFT NAV */
+.nav{
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  text-align:left;
-  scroll-snap-align:center; /* helps when snapping (optional) */
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-/* Titles inside boxes */
-.box h2{margin:0 0 8px;font-size:15px;color:var(--text)}
-.box p{margin:0 0 8px;color:var(--text);font-size:14px}
-
-/* Button */
-.btn{
-  display:inline-block;
-  padding:6px 10px;
-  background:var(--btn-bg);
-  color:var(--btn-text);
+.navbtn{
+  display:block;
   text-decoration:none;
-  border:2px solid #000;
-  font-weight:bold;
+  color:#0b0b0b;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  background: #f8f7f2;
+  border: 4px solid #000;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.25);
+  transform: rotate(-1deg);
+  position: relative;
 }
 
-/* Bottom footer banner pinned to the bottom */
-.bottom-banner{
-  border-top:2px solid var(--border);
-  background:transparent;
-  padding:10px 12px;
+.navbtn:nth-child(2){ transform: rotate(1deg); }
+.navbtn:nth-child(3){ transform: rotate(-.5deg); }
+.navbtn:nth-child(4){ transform: rotate(1.5deg); }
+.navbtn:nth-child(5){ transform: rotate(-1.2deg); }
+
+.navbtn:before{
+  content:"";
+  position:absolute;
+  left:-10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 18px solid #2fb34a;
+  filter: drop-shadow(1px 1px 0 rgba(0,0,0,.25));
+}
+
+.guestbook{
+  margin-top: 10px;
+  padding: 12px;
+  background: rgba(255,255,255,.22);
+  border: 4px dashed rgba(0,0,0,.35);
+}
+
+.gb-title{
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 8px;
+  transform: rotate(-1deg);
+}
+
+.gb-btn{
+  display:inline-block;
+  text-decoration:none;
+  padding: 10px 12px;
+  background:#0f2bff;
+  color:#ffd24a;
+  font-weight: 900;
+  border: 4px solid #000;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.25);
+}
+
+/* CENTER CONTENT */
+.globe{
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  border: 5px solid rgba(0,0,0,.25);
+  background:
+    radial-gradient(circle at 35% 30%, #b6f0ff 0 22%, #2c6bff 22% 100%),
+    radial-gradient(circle at 60% 55%, #2fb34a 0 18%, transparent 18% 100%),
+    radial-gradient(circle at 30% 65%, #2fb34a 0 14%, transparent 14% 100%),
+    radial-gradient(circle at 70% 35%, #2fb34a 0 10%, transparent 10% 100%);
+  box-shadow: 4px 4px 0 rgba(0,0,0,.18);
+}
+
+.welcome{
+  font-weight: 900;
+  background: rgba(0,0,0,.12);
+  display:inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.whatsnew{
+  margin: 6px 0 2px;
+  font-size: 40px;
+  color: #e23a2e;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  transform: rotate(-.5deg);
+}
+
+.updated{
+  font-size: 26px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  margin: 4px 0 10px;
+  color:#0b7f2b;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.15);
+}
+
+.bullets{
+  text-align:left;
+  margin: 0 auto 12px;
+  max-width: 360px;
+  font-weight: 800;
+}
+
+.construction{
+  margin: 10px auto 10px;
+  max-width: 360px;
+  background: #ffe14a;
+  border: 4px solid #000;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.2);
+  padding: 10px;
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.stripe{
+  flex: 1;
+  padding: 10px 10px;
+  border: 4px solid #000;
+  background:
+    repeating-linear-gradient(135deg,
+      #111 0 12px,
+      #111 12px 18px,
+      #ffe14a 18px 30px);
+  font-weight: 1000;
+  letter-spacing: 1px;
   text-align:center;
-  flex-shrink:0;
 }
-.footer-inner{max-width:var(--max-width);margin:0 auto;font-size:13px}
 
-/* Show a thin scrollbar view on desktop (cosmetic) */
-.boxes::-webkit-scrollbar{height:10px}
-.boxes::-webkit-scrollbar-thumb{background:#222;border-radius:6px;border:2px solid rgba(255,255,255,0.04)}
+.tiny-worker{
+  width: 42px;
+  height: 42px;
+  border: 3px solid #000;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 20%, #ffd24a 0 35%, transparent 35% 100%),
+    radial-gradient(circle at 35% 48%, #000 0 4px, transparent 4px 100%),
+    radial-gradient(circle at 65% 48%, #000 0 4px, transparent 4px 100%),
+    radial-gradient(circle at 50% 60%, #e84a3a 0 6px, transparent 6px 100%),
+    linear-gradient(#2fb34a, #2fb34a);
+}
 
-/* Small screens: still keep three boxes horizontal; allow body to scroll vertically only if viewport is extremely short */
-@media (max-width: 1100px){
-  /* reduce box width a bit to try to fit more on narrower screens */
-  :root{ --box-width: 300px; }
+.construction2{
+  margin: 0 auto;
+  max-width: 360px;
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  justify-content:flex-start;
 }
-@media (max-width: 900px){
-  :root{ --box-width: 260px; }
+
+.cone{
+  width: 34px;
+  height: 34px;
+  background: #ff8d2a;
+  border: 3px solid #000;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  box-shadow: 2px 2px 0 rgba(0,0,0,.2);
 }
-@media (max-width: 700px){
-  :root{ --box-width: 220px; }
-  /* allow vertical scrolling if the viewport becomes too short to show header + boxes + footer */
-  body{overflow:auto}
-  .boxes{padding-bottom:12px}
+
+.stripe2{
+  flex:1;
+  padding: 8px 10px;
+  background: #f8f7f2;
+  border: 4px solid #000;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.2);
+  font-weight: 900;
+}
+
+/* RIGHT “Cool Stuff!” */
+.coolstuff{
+  background: rgba(255,255,255,.18);
+  border: 4px solid rgba(0,0,0,.25);
+  padding: 12px;
+}
+
+.cooltitle{
+  font-size: 30px;
+  font-weight: 1000;
+  color: #ff8d2a;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.2);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  transform: rotate(-1deg);
+}
+
+.coolitem{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  text-decoration:none;
+  color:#0b0b0b;
+  padding: 10px 10px;
+  background: #f8f7f2;
+  border: 4px solid #000;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.2);
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.coolitem .arrow{
+  margin-left:auto;
+  font-size: 18px;
+  opacity:.8;
+}
+
+.icon{
+  width: 28px;
+  height: 28px;
+  border: 3px solid #000;
+  border-radius: 6px;
+  flex: 0 0 28px;
+  background: #fff;
+}
+
+.icon.music{
+  background:
+    radial-gradient(circle at 30% 70%, #000 0 3px, transparent 3px 100%),
+    radial-gradient(circle at 60% 70%, #000 0 3px, transparent 3px 100%),
+    linear-gradient(#000, #000);
+  background-size: auto;
+}
+.icon.palette{
+  background:
+    radial-gradient(circle at 35% 40%, #ff3b3b 0 4px, transparent 4px 100%),
+    radial-gradient(circle at 55% 55%, #ffe14a 0 4px, transparent 4px 100%),
+    radial-gradient(circle at 65% 35%, #4dc5ff 0 4px, transparent 4px 100%),
+    radial-gradient(circle at 45% 65%, #2fb34a 0 4px, transparent 4px 100%),
+    radial-gradient(circle at 70% 70%, rgba(0,0,0,.6) 0 4px, transparent 4px 100%),
+    linear-gradient(#f8d7b0, #f8d7b0);
+}
+.icon.pc{
+  background:
+    linear-gradient(#2c6bff, #2c6bff) 50% 35% / 70% 45% no-repeat,
+    linear-gradient(#000, #000) 50% 75% / 65% 10% no-repeat,
+    linear-gradient(#ddd, #ddd);
+}
+
+/* Bottom bar */
+.bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 10px 16px 16px;
+  background: #2c6bff;
+  color:#fff;
+  border-top: 6px solid rgba(0,0,0,.15);
+  position: relative;
+}
+
+.hit{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  font-weight: 900;
+}
+
+.digits{
+  display:inline-flex;
+  border: 4px solid #000;
+  background:#111;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.25);
+}
+
+.digits span{
+  display:inline-block;
+  padding: 6px 8px;
+  border-left: 1px solid rgba(255,255,255,.15);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
+  color: #fff;
+}
+.digits span:first-child{ border-left: none; }
+
+.badges{
+  display:flex;
+  align-items:stretch;
+  gap: 10px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 8px 10px;
+  background:#111;
+  border: 4px solid #000;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.25);
+  font-weight: 900;
+  font-size: 12px;
+  color:#fff;
+  min-width: 90px;
+}
+
+.badge.hot{
+  background:#e84a3a;
+}
+
+.badge.geo{
+  background:#ffe14a;
+  color:#000;
+  font-size: 16px;
+  letter-spacing: .5px;
+}
+
+/* THE marquee */
+.marq{
+  margin: 8px auto 18px;
+  max-width: 980px;
+  background: #111;
+  color: #ffe14a;
+  border: 4px solid #000;
+  padding: 8px 0;
+  font-weight: 900;
+}
+
+/* Make it still readable on narrow screens */
+@media (max-width: 860px){
+  .top{ grid-template-columns: 1fr; text-align:center; }
+  .top-left, .top-right{ justify-content:center; }
+  .mid{ grid-template-columns: 1fr; }
 }
