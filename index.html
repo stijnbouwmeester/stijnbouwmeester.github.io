@@ -3,45 +3,49 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STIJN'S PAGE — THE ARCHIVE</title>
+  <title>STIJN'S ARCHIVE</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="marquee-wrap">
-    <marquee behavior="scroll" direction="left" scrollamount="6">
-      WELCOME TO THE ARCHIVE • CHECK THE SIGNALS • CLICK AT YOUR OWN RISK
-    </marquee>
-  </div>
-
-  <header class="topbar">
-    <h1 class="site-title">STIJN'S OFFICIAL UNOFFICIAL ARCHIVE</h1>
-    <p class="subtitle">lost files · weird links · questionable theories</p>
+  <!-- Top banner with scrolling text -->
+  <header class="top-banner">
+    <div class="marquee-wrap">
+      <marquee behavior="scroll" direction="left" scrollamount="6">
+        WELCOME TO THE ARCHIVE — CHECK THE SIGNALS — CLICK AT YOUR OWN RISK
+      </marquee>
+    </div>
+    <div class="title-wrap">
+      <h1 class="site-title">STIJN'S OFFICIAL UNOFFICIAL ARCHIVE</h1>
+      <p class="site-sub">lost files · weird links · questionable theories</p>
+    </div>
   </header>
 
-  <main class="center-area" role="main">
+  <!-- Main area with 3 boxes horizontally aligned -->
+  <main class="main">
     <div class="boxes">
-      <section class="box">
+      <article class="box">
         <h2>BOX ONE</h2>
-        <p>Short text or link. Replace with whatever you want — an image, a .txt or a weird gif link.</p>
-        <p><a href="#" class="btn">OPEN</a></p>
-      </section>
+        <p>Short text or link. Replace this paragraph with your content. Keep it short so everything fits on one screen.</p>
+        <p><a class="btn" href="#">OPEN</a></p>
+      </article>
 
-      <section class="box">
+      <article class="box">
         <h2>BOX TWO</h2>
-        <p>Another area for notes, leaks, or weird ascii art. Edit the HTML directly to change it.</p>
-        <p><a href="#" class="btn">OPEN</a></p>
-      </section>
+        <p>Another area for notes, leaks, or a tiny gif. Edit the HTML to change this text or add links.</p>
+        <p><a class="btn" href="#">OPEN</a></p>
+      </article>
 
-      <section class="box">
+      <article class="box">
         <h2>BOX THREE</h2>
-        <p>Links, downloads, or the guestbook. Keep it short so everything fits on one screen.</p>
-        <p><a href="guestbook.html" class="btn">GUESTBOOK</a></p>
-      </section>
+        <p>Guestbook, downloads, or weird ascii art go here. Link to guestbook.html if you want the local guestbook.</p>
+        <p><a class="btn" href="guestbook.html">GUESTBOOK</a></p>
+      </article>
     </div>
   </main>
 
-  <footer class="foot">
-    <div class="footer-box">
+  <!-- Footer banner pinned to the bottom -->
+  <footer class="bottom-banner">
+    <div class="footer-inner">
       <p>© Stijn Bouwmeester — this page is for fun. Email: <a href="mailto:hello@stijnbouwmeester.nl">hello@stijnbouwmeester.nl</a></p>
     </div>
   </footer>
