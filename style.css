@@ -230,7 +230,7 @@ img {
 }
 
 .sepia {
-	filter: sepia(1) hue-rotate(25deg);
+	filter: sepia(1) hue-rotate(-20deg) saturate(1.5);
 	transition: 0.3s all;
 }
 
@@ -395,6 +395,7 @@ li::before {
 	border-radius: 4px;
 
 }
+
 
 
 
