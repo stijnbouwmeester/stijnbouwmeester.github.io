@@ -121,18 +121,18 @@ h1 {
 	font-weight: 600;
 	letter-spacing: 0.5px;
 	padding: 6px 12px;
-	border-bottom: 3px double #91b291;
+	border-bottom: 3px double #5C3C22;
 	padding: 0;
 	padding-bottom: 6px;
 	margin: 0;
 	margin-top: 6px;
 	margin-bottom: 12px;
-	text-shadow: 1px 1px 1px #2d345b;
+	text-shadow: 1px 1px 1px #5C3C22;
 }
 
 h1::before {
 	content: '\25C6';
-	color: #91b291;
+	color: #F7E6DC;
 	margin-right: 5px;
 }
 
@@ -164,7 +164,7 @@ h3::before {
 }
 
 .message {
-	background-color: #91B291;
+	background-color: #D18A4F;
 	border-radius: 6px;
 	padding: 12px 12px;
 	display: inline-block;
@@ -174,11 +174,11 @@ h3::before {
 	min-height: 60px;
 	position: relative;
 	z-index: 2;
-	border: 1px solid #364874;
+	border: 1px solid #5C3C22;
 }
 
 .chat-me .message {
-	background-color: #C3C89B;
+	background-color: #D9C3B4;
 }
 
 /*.chat-me::after {
@@ -395,5 +395,6 @@ li::before {
 	border-radius: 4px;
 
 }
+
 
 
