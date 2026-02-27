@@ -44,7 +44,7 @@ body, html {
 	margin: auto;
 	top: 50px;
 	position: relative;
-	box-shadow: 2px 2px 5px #252547;
+	box-shadow: 2px 2px 5px #5e1201;
 }
 
 .header {
@@ -69,7 +69,7 @@ body, html {
 	border-radius: 4px;
 	display: inline-block;
 	position: absolute;
-	border: 1px solid #252547;
+	border: 1px solid #5e1201;
 	background-image: url('img/side.gif');
 }
 
@@ -93,7 +93,7 @@ body, html {
 .menu::after {
 	content: " ";
 	display: block;
-	border-bottom: 1px solid #252547;
+	border-bottom: 1px solid #5e1201;
 }
 
 .content {
@@ -154,7 +154,7 @@ h3 {
 	margin-bottom: 8px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	color: #252547;
+	color: #5e1201;
 }
 
 h3::before {
@@ -382,7 +382,7 @@ li::before {
 }
 
 .border {
-	border: 1px solid #252547;
+	border: 1px solid #5e1201;
 }
 
 .border-0 {
@@ -395,6 +395,7 @@ li::before {
 	border-radius: 4px;
 
 }
+
 
 
 
