@@ -97,7 +97,7 @@ body, html {
 }
 
 .content {
-	background-color: #6793A3;
+	background-color: #B85A32;
 	height: 494px;
 	width: 653px;
 	margin: 12px 16px;
@@ -108,7 +108,7 @@ body, html {
 	box-sizing: border-box;
 	overflow: auto;
 	line-height: 1.4rem;
-	border: 1px solid #2D345B;
+	border: 1px solid #9C360B;
 }
 
 .main {
@@ -395,4 +395,5 @@ li::before {
 	border-radius: 4px;
 
 }
+
 
