@@ -6,7 +6,7 @@ body, html {
 	font-family: Calibri, sans-serif;
 	font-size: 13px;
 	background-color: #E08236;
-	color: #252547;
+	color: #4D2700;
 	background-image: url('img/star-10.png');
 	background-repeat: repeat;
 }
@@ -32,12 +32,12 @@ body, html {
 
 * {
 	scrollbar-width: thin; 
-	scrollbar-color: #2D345B #91B291; 
+	scrollbar-color: #4D2700 #4D2700; 
 }
 
 .outer {
-	background-color: #364874;
-	border: 1px solid #252547;
+	background-color: #B33900;
+	border: 1px solid #B34800;
 	border-radius: 4px;
 	width: 900px;
 	height: 600px;
@@ -48,10 +48,10 @@ body, html {
 }
 
 .header {
-	background-color: #2D345B;
+	background-color: #801700;
 	color: #DBE1B6;
 	padding: 10px 16px;
-	border-bottom: 1px solid #252547;
+	border-bottom: 1px solid #5E1201;
 }
 
 .subtitle {
@@ -74,7 +74,7 @@ body, html {
 }
 
 .menu {
-	border-bottom: 1px solid #4C638F;
+	border-bottom: 1px solid #5E1201;
 }
 
 .menu a {
@@ -395,3 +395,4 @@ li::before {
 	border-radius: 4px;
 
 }
+
