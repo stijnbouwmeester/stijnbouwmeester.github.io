@@ -261,24 +261,24 @@ h1 + i {
 }
 
 a.button {
-	display: inline-block;
-	background: #4c638f;
-	border-bottom: 4px solid #364874;
-	border-right: 4px solid #364874;
-	border-top: 4px solid #6793a3;
-	border-left: 4px solid #6793a3;
-	padding: 3px 6px;
-	color: #dbe1b6;
-	text-decoration: none;
-	border-radius: 2px;
-	outline: 1px solid #364874;
+  display: inline-block;
+  background: #b33900;
+  border-bottom: 4px solid #b1582f;
+  border-right: 4px solid #b1582f;
+  border-top: 4px solid #ae6644;
+  border-left: 4px solid #ae6644;
+  padding: 3px 6px;
+  color: #e1c2b6;
+  text-decoration: none;
+  border-radius: 2px;
+  outline: 1px solid #6d0000;
 }
 
 a.button:hover {
-	border-bottom: 4px solid #6793a3;
-	border-right: 4px solid #6793a3;
-	border-top: 4px solid #364874;
-	border-left: 4px solid #364874;
+	border-bottom: 4px solid #d38663;
+	border-right: 4px solid #d38663;
+	border-top: 4px solid #b1582f;
+	border-left: 4px solid #b1582f;
 }
 
 .disabled {
@@ -395,6 +395,7 @@ li::before {
 	border-radius: 4px;
 
 }
+
 
 
 
